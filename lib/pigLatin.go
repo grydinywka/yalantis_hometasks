@@ -1,4 +1,4 @@
-package encode1
+package symbols
 
 import (
 	"bytes"
@@ -38,11 +38,11 @@ func ToPigLatin(phrase *string) *string {
 		length := len(word)
 		j := 0                 // line indicates start vowel
 		if isLetter(word[j]) { // check if the word starts with letter
-			for ; j < length && isVowelChar(word[j]) == false; j++ {
+			for ; j < length && !isVowelChar(word[j]); j++ {
 			}
 			k := length - 1 // line that indicate not letter
 			// notLetterFlag := false
-			for ; k > j && isLetter(word[k]) == false; k-- {
+			for ; k > j && !isLetter(word[k]); k-- {
 			}
 			k += 1 // make shift because now k is before non letter symbol
 
