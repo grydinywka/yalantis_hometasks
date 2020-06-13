@@ -4,18 +4,26 @@ import (
 	"fmt"
 )
 
-func SliceSnail(size int) []int {
-	// make square
-	square := make([][]int, size)
+func SliceSnail(square [][]int) []int {
 	line := []int{}
 
-	for row, item := range square {
-		for col := 0; col < size; col++ {
-			item = append(item, size*(row+1)-size+col+1)
+	// we get size of square
+	width := len(square)
+	height := 0
+	fmt.Println(width, "width")
+	for row, val := range square {
+		fmt.Println(row, val)
+		currentLen := len(val)
+		if row != 0 && height != currentLen {
+			panic("len of every of rows must be the same")
 		}
-		square[row] = item
+		height = currentLen
 	}
-	min, max := 0, size-1
+	if width != height {
+		panic("Width and height are diff")
+	}
+
+	min, max := 0, width-1
 	for ; min < max; min, max = min+1, max-1 {
 		row := min
 		for col := min; col < max; col++ {
@@ -43,9 +51,16 @@ func SliceSnail(size int) []int {
 }
 
 func main() {
-	fmt.Println(SliceSnail(1))
-    fmt.Println(SliceSnail(2))
-    fmt.Println(SliceSnail(3))
-    fmt.Println(SliceSnail(4))
-    fmt.Println(SliceSnail(5))
+	// make square
+	size := 4
+	square := make([][]int, size)
+
+	for row, item := range square {
+		for col := 0; col < size; col++ {
+			item = append(item, size*(row+1)-size+col+1)
+		}
+		square[row] = item
+	}
+	// square := [][]int{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}}
+	fmt.Println(SliceSnail(square))
 }
