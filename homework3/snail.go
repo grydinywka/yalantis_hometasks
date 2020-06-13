@@ -1,4 +1,4 @@
-package main
+package snail
 
 import (
 	"fmt"
@@ -50,17 +50,17 @@ func SliceSnail(square [][]int) []int {
 	return line
 }
 
-func main() {
-	// make square
-	size := 4
-	square := make([][]int, size)
+// func main() {
+// 	// make square
+// 	size := 4
+// 	square := make([][]int, size)
 
-	for row, item := range square {
-		for col := 0; col < size; col++ {
-			item = append(item, size*(row+1)-size+col+1)
-		}
-		square[row] = item
-	}
-	// square := [][]int{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}}
-	fmt.Println(SliceSnail(square))
-}
+// 	for row, item := range square {
+// 		for col := 0; col < size; col++ {
+// 			item = append(item, size*(row+1)-size+col+1)
+// 		}
+// 		square[row] = item
+// 	}
+// 	// square := [][]int{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}}
+// 	fmt.Println(SliceSnail(square))
+// }

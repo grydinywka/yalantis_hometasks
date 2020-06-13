@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 
+	HW "./homework3"
 	L "./lib"
 )
 
@@ -17,4 +18,17 @@ func main() {
 
 	decoded := L.Decode(&phrase)
 	fmt.Printf("Encode = %s\n", *decoded)
+
+	// make square
+	size := 4
+	square := make([][]int, size)
+
+	for row, item := range square {
+		for col := 0; col < size; col++ {
+			item = append(item, size*(row+1)-size+col+1)
+		}
+		square[row] = item
+	}
+	// square := [][]int{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}}
+	fmt.Println(HW.SliceSnail(square))
 }
