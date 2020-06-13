@@ -20,7 +20,7 @@ func main() {
 	fmt.Printf("Encode = %s\n", *decoded)
 
 	// make square
-	size := 4
+	size := 6
 	square := make([][]int, size)
 
 	for row, item := range square {
