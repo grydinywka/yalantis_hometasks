@@ -32,7 +32,7 @@ type Task struct {
 
 type Comment struct {
 	Question string
-	Task     Task
+	Task     *Task
 }
 
 type BoardManager struct {
@@ -75,4 +75,26 @@ func (bm *BoardManager) MoveTop(column *Column, task *Task) {
 	if topTask != nil {
 		topTask.Priority, task.Priority = task.Priority, topTask.Priority
 	}
+}
+
+func (bm *BoardManager) MoveToColumn(task *Task, newColumn *Column) {
+	oldColumn := task.Column
+	task.Column = newColumn
+	task.Priority = bm.GetPriorityLast(newColumn)
+	newColumn.Tasks = append(newColumn.Tasks, task)
+	var index int = -1
+	for i, taskVal := range oldColumn.Tasks {
+		if taskVal == task {
+			index = i
+		}
+	}
+	if index != -1 {
+		oldColumn.Tasks = append(oldColumn.Tasks[:index], oldColumn.Tasks[index+1:]...)
+	}
+
+}
+
+func (bm *BoardManager) AddComment(task *Task, question string) {
+	comment := &Comment{Question: question, Task: task}
+	task.Comments = append(task.Comments, comment)
 }

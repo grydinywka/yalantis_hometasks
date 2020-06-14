@@ -56,8 +56,16 @@ func main() {
 	for _, t := range c.Tasks {
 		fmt.Println(*t, "tasks - columns")
 	}
+	bm.MoveToColumn(c.Tasks[4], &c2)
+	// bm.MoveToColumn(c.Tasks[2], &c2)
 	// fmt.Println(*c.Tasks[1], "tasks - columns")
-	// fmt.Println(*c.Tasks[2], "tasks - columns")
+	fmt.Println(len(c2.Tasks), c2.Tasks[0].Priority, "c2")
+	// fmt.Println(len(c2.Tasks), c2.Tasks[1].Priority, "c2")
+
+	fmt.Println(len(c.Tasks), "c")
+
+	bm.AddComment(c.Tasks[0], "What is up?")
+	fmt.Println(c.Tasks[0].Comments[0], "c")
 
 	// bm2 := LT.NewBoardManager(&b)
 	// fmt.Println(bm2.Columns[0], "bm2")
