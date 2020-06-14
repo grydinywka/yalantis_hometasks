@@ -42,6 +42,23 @@ func main() {
 	fmt.Println(b)
 	fmt.Println(bm, "bm")
 
-	bm2 := LT.NewBoardManager(&b)
-	fmt.Println(bm2.Columns[0], "bm2")
+	bm.CreateTask(&c, "Init task$$$$$", &LT.First)
+	bm.CreateTask(&c, "Second task$$$$$", &LT.First)
+	bm.CreateTask(&c, "Third task$$$$$", &LT.First)
+	bm.CreateTask(&c, "Fourth task$$$$$", &LT.First)
+	bm.CreateTask(&c, "Fifth task$$$$$", &LT.First)
+
+	for _, t := range c.Tasks {
+		fmt.Println(*t, "tasks - columns")
+	}
+	fmt.Println("--------------------")
+	bm.MoveTop(&c, c.Tasks[4])
+	for _, t := range c.Tasks {
+		fmt.Println(*t, "tasks - columns")
+	}
+	// fmt.Println(*c.Tasks[1], "tasks - columns")
+	// fmt.Println(*c.Tasks[2], "tasks - columns")
+
+	// bm2 := LT.NewBoardManager(&b)
+	// fmt.Println(bm2.Columns[0], "bm2")
 }
