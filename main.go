@@ -42,4 +42,6 @@ func main() {
 	fmt.Println(b)
 	fmt.Println(bm, "bm")
 
+	bm2 := LT.NewBoardManager(&b)
+	fmt.Println(bm2.Columns[0], "bm2")
 }

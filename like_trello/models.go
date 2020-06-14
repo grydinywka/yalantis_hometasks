@@ -34,10 +34,12 @@ type BoardManager struct {
 }
 
 func NewBoardManager(board *Board, columns ...*Column) *BoardManager {
-	// bm := BoardManager{Board: board}
 	for _, column := range columns {
 		column.Board = *board
 		fmt.Println("col", column)
+	}
+	if len(columns) == 0 {
+		columns = append(columns, &Column{Name: "Default", Board: *board})
 	}
 	return &BoardManager{Board: *board, Columns: columns}
 }
