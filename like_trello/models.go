@@ -1,7 +1,5 @@
 package like_trello
 
-import "fmt"
-
 type Status int
 
 var (
@@ -17,7 +15,7 @@ type Board struct {
 
 type Column struct {
 	Name         string
-	Board        *Board
+	Board        *Board `json:"-"`
 	Tasks        []*Task
 	PriorityLast int
 }
@@ -43,7 +41,7 @@ type BoardManager struct {
 func NewBoardManager(board *Board, columns ...*Column) *BoardManager {
 	for _, column := range columns {
 		column.Board = board
-		fmt.Println("col", column)
+		// fmt.Println("col", column)
 	}
 	if len(columns) == 0 {
 		columns = append(columns, &Column{Name: "Default", Board: board})
