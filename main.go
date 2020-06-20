@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-
+	"log"
 	HW "./homework3"
 	L "./lib"
 )
@@ -30,5 +30,9 @@ func main() {
 		square[row] = item
 	}
 	// square := [][]int{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}}
-	fmt.Println(HW.SliceSnail(square))
+	snail, err := HW.SliceSnail(square)
+	if err != nil {
+		log.Println(err)
+	}
+	fmt.Println(snail)
 }

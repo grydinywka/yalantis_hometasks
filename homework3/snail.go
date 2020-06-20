@@ -2,10 +2,11 @@ package snail
 
 import (
 	"fmt"
+	"errors"
 )
 
-func SliceSnail(square [][]int) []int {
-	line := []int{}
+func SliceSnail(square [][]int) (line []int, err error) {
+	//line := []int{}
 
 	// we get size of square
 	width := len(square)
@@ -15,12 +16,12 @@ func SliceSnail(square [][]int) []int {
 		fmt.Println(row, val)
 		currentLen := len(val)
 		if row != 0 && height != currentLen {
-			panic("len of every of rows must be the same")
+			return line, errors.New("len of every of rows must be the same")
 		}
 		height = currentLen
 	}
 	if width != height {
-		panic("Width and height are diff")
+		return line, errors.New("Width and height are diff")
 	}
 
 	min, max := 0, width-1
@@ -47,7 +48,7 @@ func SliceSnail(square [][]int) []int {
 		line = append(line, square[min][max])
 	}
 
-	return line
+	return line, nil
 }
 
 // func main() {
